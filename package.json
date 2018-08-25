@@ -1,0 +1,20 @@
+{
+  "name": "Vechain Cash Explorer",
+  "version": "1.0.0",
+  "description": "A web app that allows users to view their USD balance (based on binance's amount) by inputting their wallet address. Much more to come",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "github.com/schembora",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "^3.6.6",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11",
+    "serve-static": "^1.13.2",
+    "thorify": "^0.3.4",
+    "web3": "^1.0.0-beta.35"
+  }
+}
