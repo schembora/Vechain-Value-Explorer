@@ -10,8 +10,8 @@ var app = express();
 const binance = require('node-binance-api')().options({
 	APIKEY: 'KEY',
 	APISECRET: 'SECRET',
-	useServerTime: true, // If you get timestamp errors, synchronize to server time at startup
-	test: false // If you want to use sandbox mode where orders are simulated
+	useServerTime: true,
+	test: false
   });
 
 app.engine('.hbs', exphbs({defaultLayout: 'layout', extname: '.hbs'}));
@@ -38,5 +38,9 @@ app.post('/myaction', function(req, res) {
 		  });
 	
 	});
+});
+
+app.listen(8080, function() {
+	
 });
 
