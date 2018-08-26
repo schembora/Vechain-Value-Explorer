@@ -7,6 +7,13 @@ var exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
 var app = express();
 
+const binance = require('node-binance-api')().options({
+	APIKEY: 'KEY',
+	APISECRET: 'SECRET',
+	useServerTime: true, // If you get timestamp errors, synchronize to server time at startup
+	test: false // If you want to use sandbox mode where orders are simulated
+  });
+
 app.engine('.hbs', exphbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs')
 
@@ -23,16 +30,13 @@ app.post('/myaction', function(req, res) {
 	var thorPromise = web3.eth.getEnergy(address);
 	var vetPromise = web3.eth.getBalance(address);
 	Promise.all([thorPromise,vetPromise]).then(function(allData){
-		thor = allData[0].substring(0,allData[0].length-16);
-		res.render('index',{first_name: thor, last_name: allData[1]});
+		thor = (parseInt(allData[0].substring(0,allData[0].length-16))/100).toFixed(2);
+		vet = (parseInt(allData[1].substring(0,allData[1].length-16))/100).toFixed(2);
+		binance.prices('VETUSDT', (error, ticker) => {
+			var total = parseFloat(vet) * parseFloat(ticker.VETUSDT);
+			res.render('index',{thorValue: thor, vetValue: vet,totalUSD: total});
+		  });
+	
 	});
-});
-
-app.listen(8080, function() {
-  console.log('Server running at http://127.0.0.1:8080/');
-  console.log('Running at perfect speed');
-});
-web3.eth.getBlockNumber().then(result => {
-    console.log(result)
 });
 

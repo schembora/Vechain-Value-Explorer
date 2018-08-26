@@ -1,2 +1,33 @@
-<h1> {{first_name}} </h1>
-<h1> {{last_name}} </h1>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <title> Your Vechain Account</title>
+</head>
+<body>
+    <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <ul class="right hide-on-med-and-down">
+        <li><a href="">New Address</a></li>
+      </ul>
+      <ul class="left hide-on-med-and-down">
+        <li><a href="">Vechain Value Explorer</a></li>
+      </ul>
+    </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Your Vechain Wallet</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Your current ammount of VET: {{vetValue}}</h5>
+        <h5 class="header col s12 light">Your current amount of VTHO: {{thorValue}}</h5>
+        <h5 class="header col s12 light">Total USD of VET: ${{totalUSD}}</h5>
+      </div>
+      <br><br>
+    </div>
+    </div>
+</body>
+
+
+
+
